@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="es-AR"> <!-- Lenguaje -->
+
+<head> <!-- Encabezado -->
+
+    <!-- Meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Titulo -->
+    <title>Inicio</title>
+
+    <!-- Direccion a la hoja de estilos -->
+    <link rel="stylesheet" href="src/start.css">
+
+</head>
+
+<body> <!-- Cuerpo de la pagina -->
+
+    <!-- Logo del ITC -->
+    <img src="src/assets/Logo.svg" alt="No se pudo cargar la imagen." height="300">
+
+    <h1 class="title" > <!-- Titulo -->
+
+    <!-- Letras (El span es para que luego sean una blanca y otra celeste) -->
+    <p>I<span>n</span>g<span>r</span>e<span>s</span>e<span> e</span>l<span> n</span>u<span>m</span>e<span>r</span>o<span> d</span>e <span>v</span>o<span>t</span>a<span>n</span>t<span>e</span>s<span> p</span>r<span>e</span>s<span>e</span>n<span>t</span>e<span>s</span>.</p>
+
+    </h1>
+
+    <!-- El input donde pones el numero -->
+    <input class="input" name="text" type="number" id="voteCount" min="1" placeholder="Número de votos">
+
+    <br><br> <!-- Dos saltos de linea -->
+
+    <button onclick="startVoting()"class="brutalist-button"> <!-- Boton que conecta a la funcion startVoting() -->
+
+    <div class="button-text"> <!-- Div para ponerle la clase al boton -->
+
+        <!-- Textos -->
+        <span>Iniciar</span>
+        <span>Votaciones</span>
+
+    </div>
+
+    </button>
+
+    <script src="src/start.js" ></script> <!-- Link al script -->
+
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="es"> <!-- Lenguaje -->
+
+<head> <!-- Encabezado -->
+
+    <!-- Meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Titulo de la pagina -->
+    <title>Resultados</title>
+
+    <link rel="stylesheet" href="src/resultados.css"> <!-- Link a la hoja de estilos -->
+
+</head>
+
+<body> <!-- Cuerpo de la pagina -->
+
+    <img src="src/assets/Logo.svg" alt="No se pudo cargar la imagen." height="300"> <!-- Logo del ITC -->
+
+    <h1>Resultados de la votación</h1> <!-- Titulo -->
+
+    <table> <!-- Tabla de resultados -->
+
+        <thead> <!-- Encabezado de la pagina -->
+
+            <tr> <!-- Fila -->
+
+                <th>Partido</th> <!-- Columna de partidos -->
+                <th>Votos</th> <!-- Columna de votos -->
+
+            </tr>
+
+        </thead>
+
+        <tbody> <!-- Cuerpo de la tabla -->
+
+            <tr> <!-- Fila de FRA -->
+
+                <td>FRA</td> <!-- Partido -->
+                <td id="votesFRA">0</td> <!-- Votos -->
+
+            </tr>
+
+            <tr> <!-- Fila de AE -->
+
+                <td>AE</td> <!-- Partido -->
+                <td id="votesAE">0</td> <!-- Votos -->
+
+            </tr>
+
+            <tr> <!-- Fia de votos en blanco -->
+
+                <td>Voto en Blanco</td> <!-- Partido -->
+                <td id="votesBlanco">0</td> <!-- Votos -->
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <script src="src/resultados.js"></script> <!-- Link al script -->
+
+</body>
+</html>
