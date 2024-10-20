@@ -6,7 +6,7 @@ let canVote = true; // Inicializa la variable canVote como verdadero
 
 function selectParty(party) { // Funcion de cuando se selecciona un partido
     if (!canVote) {
-        document.getElementById('message').textContent = 'Ya has votado.';
+        document.getElementById('message').textContent = 'Ya has votado, no puedes votar 2 veces.';
         return;
     }
 
@@ -18,7 +18,7 @@ function selectParty(party) { // Funcion de cuando se selecciona un partido
 
 function submitVote() { // Funcion de cuando votas mas veces de las permitidas
     if (selectedParty === '') {
-        document.getElementById('message').textContent = 'Error, asegurate de haber seleccionado un partido y votar una sola vez.';
+        document.getElementById('message').textContent = 'Error, reinicia la pagina e intenta de nuevo.';
         return;
     }
 
