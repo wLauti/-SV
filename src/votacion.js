@@ -1,7 +1,7 @@
 let selectedParty = ''; // Partido seleccionado
 let voteCount = localStorage.getItem('voteCount') || 1;
 let votesLeft = voteCount;
-let votes = JSON.parse(localStorage.getItem('votes')) || { FRA: 0, AE: 0, Blanco: 0 };
+let votes = JSON.parse(localStorage.getItem('votes')) || { FRA: 0, AE: 0, Blanco: 0, UPP: 0, NBA: 0 };
 let canVote = true;
 
 function selectParty(party) {
@@ -59,4 +59,5 @@ document.addEventListener('keydown', function (event) {
         voteButton.classList.remove('enabled');
     }
 });
+
 
