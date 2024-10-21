@@ -1,61 +1,54 @@
-let selectedParty = ''; // Partido seleccionado
-let voteCount = localStorage.getItem('voteCount') || 1;
-let votesLeft = voteCount;
-let votes = JSON.parse(localStorage.getItem('votes')) || { FRA: 0, AE: 0, Blanco: 0 };
-let canVote = true;
+let selectedParty = ''; // Variable de el partido seleccionado
+let voteCount = localStorage.getItem('voteCount') || 1;  // Inicializar voto único
+let votesLeft = voteCount; // Los votos que faltan es igual a la cantidad voteCount
+let votes = JSON.parse(localStorage.getItem('votes')) || { FRA: 0, AE: 0, Blanco: 0 }; // Agarra las variables de votos de cada partido del localStorage
+let canVote = true; // Inicializa la variable canVote como verdadero
 
-function selectParty(party) {
+function selectParty(party) { // Funcion de cuando se selecciona un partido
     if (!canVote) {
         document.getElementById('message').textContent = 'Ya has votado, no puedes votar 2 veces.';
         return;
     }
 
-    // Quitar selección de otros botones
+    // Quitar selección de los otros botones
     document.querySelectorAll('.voting-button').forEach(btn => btn.classList.remove('selected'));
     document.getElementById(party).classList.add('selected');
-    selectedParty = party;
-
-    // Habilitar el botón de votar
-    const voteButton = document.getElementById('voteButton');
-    voteButton.disabled = false;
-    voteButton.classList.add('enabled');
+    selectedParty = party; 
 }
 
-function submitVote() {
+function submitVote() { // Funcion de cuando votas mas veces de las permitidas
     if (selectedParty === '') {
-        document.getElementById('message').textContent = 'Error, reinicia la página e intenta de nuevo.';
+        document.getElementById('message').textContent = 'Error, reinicia la pagina e intenta de nuevo.';
         return;
     }
 
+    // Incrementar el voto del partido seleccionado
     votes[selectedParty]++;
     votesLeft--;
-    canVote = false;
+    canVote = false;  // Bloquear más votos
 
+    // Guardar votos en localStorage
     localStorage.setItem('votes', JSON.stringify(votes));
 
-    document.getElementById('message').textContent = `Has votado por ${selectedParty}.`;
-
-    // Deshabilitar el botón de votar después de votar
-    const voteButton = document.getElementById('voteButton');
-    voteButton.disabled = true;
-    voteButton.classList.remove('enabled');
-    voteButton.classList.add('disabled');
+    document.getElementById('message').textContent = Has votado por ${selectedParty}.;
 
     if (votesLeft === 0) {
+        // Redirigir a resultados si ya no hay votos disponibles
+        localStorage.setItem('votes', JSON.stringify(votes));
         window.location.href = 'resultados.html';
     }
 }
 
-// Permitir volver a votar presionando "0"
-document.addEventListener('keydown', function (event) {
+document.addEventListener('keydown', function(event) {
     if (event.key === '0' && !canVote && votesLeft > 0) {
         canVote = true;
         document.querySelectorAll('.voting-button').forEach(btn => btn.classList.remove('selected'));
         document.getElementById('message').textContent = '';
+    }
+});
 
-        // Deshabilitar el botón de votar hasta que se seleccione un nuevo partido
-        const voteButton = document.getElementById('voteButton');
-        voteButton.disabled = true;
-        voteButton.classList.remove('enabled');
+document.querySelector('body').addEventListener('click', function() {
+    if (canVote) {
+        submitVote();
     }
 });
