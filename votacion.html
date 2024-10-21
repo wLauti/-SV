@@ -1,86 +1,53 @@
 <!DOCTYPE html>
+<html lang="es-AR">
 
-<html lang="es-AR"> <!-- Lenguaje -->
-
-<head> <!-- Encabezado -->
-
-    <!-- Meta -->
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Titulo de la pagina -->
     <title>Votación</title>
-
-    <link rel="stylesheet" href="src/votacion.css"> <!-- Link a la hoja de estilos -->
-
+    <link rel="stylesheet" href="src/votacion.css">
 </head>
 
-<body> <!-- Cuerpo de la pagina -->
-
-    <h1 class="e1"> <!-- Encabezado-->
-
-        <!-- Logo del ITC izquierdo -->
+<body>
+    <h1 class="e1">
         <img class="e1" src="src/assets/Logo.svg" alt="No se pudo cargar la imagen." height="50">
-
-        <!-- Titulo -->
         Votaciones 3A
-
-        <!-- Logo del ITC derecho -->
         <img class="e1" src="src/assets/Logo.svg" alt="No se pudo cargar la imagen." height="50">
-
     </h1>
 
-    <div class="button-container"> <!-- Div de los botones de los partidos -->
-
-        <button class="voting-button" id="FRA" onclick="selectParty('FRA')"> <!-- Boton del partido FRA -->
-
-            <img src="src/assets/StartBackground.png" alt="Imagen no disponible" height="260" width="250"> <!-- Imagen del partido -->
-
-            FRA <!-- Nombre del partido -->
-
-            <br> <!-- Salto de linea -->
-
-            <span><strong>Martin Estevez</strong></span> <!-- Delegado -->
-
-            <br> <!-- Salto de linea -->
-
-            Valentino Dytyniack <!-- Vicedelegado -->
-
+    <div class="button-container">
+        <button class="voting-button" id="FRA" onclick="selectParty('FRA')">
+            <img src="src/assets/StartBackground.png" alt="Imagen no disponible" height="260" width="250">
+            FRA
+            <br>
+            <span><strong>Martin Estevez</strong></span>
+            <br>
+            Valentino Dytyniack
         </button>
 
-        <button class="voting-button" id="AE" onclick="selectParty('AE')"> <!-- Boton del partido AE -->
-
-            <img src="src/assets/StartBackground.png" alt="Imagen no disponible" height="260" width="250"> <!-- Imagen del partido -->
-
-            AE <!-- Nombre del partido -->
-
-            <br> <!-- Salto de linea -->
-
-            <span><strong>Conrado Rosell</strong></span> <!-- Delegado -->
-
-            <br> <!-- Salto de linea -->
-
-            Mayra Bauzá <!-- Vicedelegado -->
-
+        <button class="voting-button" id="AE" onclick="selectParty('AE')">
+            <img src="src/assets/StartBackground.png" alt="Imagen no disponible" height="260" width="250">
+            AE
+            <br>
+            <span><strong>Conrado Rosell</strong></span>
+            <br>
+            Mayra Bauzá
         </button>
 
-        <button class="voting-button" id="Blanco" onclick="selectParty('Blanco')"> <!-- Boton de voto en blanco -->
-
-            <img src="src/assets/VotoEnBlanco.png" alt="Imagen no disponible" height="260" width="250"> <!-- Imagen de voto en blanco -->
-
-            <span><strong>Voto en blanco</strong></span> <!-- Texto de voto en blanco -->
-
+        <button class="voting-button" id="Blanco" onclick="selectParty('Blanco')">
+            <img src="src/assets/VotoEnBlanco.png" alt="Imagen no disponible" height="260" width="250">
+            <span><strong>Voto en blanco</strong></span>
         </button>
-
     </div>
 
-    <!-- Texto de privacidad -->
-    <h4>La votacion es privada. Ningun individuo tiene acceso a la eleccion personal y no existe guardado de datos personales. Al momento de presionar el partido deseado, la eleccion no se puede deshacer ni cambiar. Solo se permite votar una vez, una ves que votaste, el sistema se bloquea hasta el desbloqueo de alguna autoridad de la mesa. Gracias por votar y confiar en nuestro sistema.</h4>
+    <!-- Botón de votar -->
+    <button id="voteButton" class="vote-button" disabled onclick="submitVote()">Votar</button>
 
-    <div id="message" class="message"></div> <!-- Div de la alerta -->
+    <h4>La votación es privada. Ningun individuo tiene acceso a la elección personal...</h4>
 
-    <script src="src/votacion.js"></script> <!-- Link al script -->
+    <div id="message" class="message"></div>
 
+    <script src="src/votacion.js"></script>
 </body>
 
 </html>
