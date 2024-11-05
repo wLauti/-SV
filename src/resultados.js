@@ -52,14 +52,14 @@ document.addEventListener('keydown', function(event) {
 // Función para actualizar los votos en la tabla y la gráfica
 // Verificar si los votos cambiaron antes de actualizar la gráfica
 function updateVotes() {
-    const totalVotes = votes.FRA + votes.AE + votes.UPP + votes.NBA;
+    const totalVotes = votes.FRA + votes.AE + votes.UPP + votes.NBA + votes.Blanco;
 
     // Evitar división por cero
-    const percentFRA = totalVotes > 0 ? (votes.FRA / totalVotes * 100).toFixed(2) : 0;
-    const percentAE = totalVotes > 0 ? (votes.AE / totalVotes * 100).toFixed(2) : 0;
-    const percentUPP = totalVotes > 0 ? (votes.UPP / totalVotes * 100).toFixed(2) : 0;
-    const percentNBA = totalVotes > 0 ? (votes.NBA / totalVotes * 100).toFixed(2) : 0;
-    const percentBlanco = totalVotes > 0 ? (votes.Blanco / (totalVotes + votes.Blanco) * 100).toFixed(2) : 0;
+    const percentFRA = totalVotes > 0 ? (votes.FRA / (totalVotes - votes.Blanco) * 100).toFixed(2) : 0;
+    const percentAE = totalVotes > 0 ? (votes.AE / (totalVotes - votes.Blanco) * 100).toFixed(2) : 0;
+    const percentUPP = totalVotes > 0 ? (votes.UPP / (totalVotes - votes.Blanco) * 100).toFixed(2) : 0;
+    const percentNBA = totalVotes > 0 ? (votes.NBA / (totalVotes - votes.Blanco) * 100).toFixed(2) : 0;
+    const percentBlanco = totalVotes > 0 ? (votes.Blanco / totalVotes * 100).toFixed(2) : 0;
 
     // Actualizar solo si los votos han cambiado
     if (document.getElementById('votesFRA').textContent != votes.FRA.toString()) {
