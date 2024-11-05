@@ -10,7 +10,7 @@ let chart = new Chart(ctx, {
         datasets: [{
             label: 'Porcentaje de Votos',
             data: [votes.FRA, votes.AE, votes.Blanco, votes.UPP, votes.NBA], // Datos iniciales
-            backgroundColor: ['#00e0ff', '#ff5252', '#f1f1f1', "2c2c2c", "ff8f00"], // Colores para cada partido
+            backgroundColor: ['#00ff3a', '#00c9ff', '#b4b4b4', "#ff1e1e", "#ff8b00"], // Colores para cada partido
             hoverOffset: 4
         }]
     },
