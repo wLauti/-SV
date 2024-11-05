@@ -52,14 +52,14 @@ document.addEventListener('keydown', function(event) {
 // Función para actualizar los votos en la tabla y la gráfica
 // Verificar si los votos cambiaron antes de actualizar la gráfica
 function updateVotes() {
-    const totalVotes = votes.FRA + votes.AE + votes.Blanco + votes.UPP + votes.NBA;
+    const totalVotes = votes.FRA + votes.AE + votes.UPP + votes.NBA;
 
     // Evitar división por cero
     const percentFRA = totalVotes > 0 ? (votes.FRA / totalVotes * 100).toFixed(2) : 0;
     const percentAE = totalVotes > 0 ? (votes.AE / totalVotes * 100).toFixed(2) : 0;
     const percentUPP = totalVotes > 0 ? (votes.UPP / totalVotes * 100).toFixed(2) : 0;
     const percentNBA = totalVotes > 0 ? (votes.NBA / totalVotes * 100).toFixed(2) : 0;
-    const percentBlanco = totalVotes > 0 ? (votes.Blanco / totalVotes * 100).toFixed(2) : 0;
+    const percentBlanco = totalVotes > 0 ? (votes.Blanco / (totalVotes + votes.Blanco) * 100).toFixed(2) : 0;
 
     // Actualizar solo si los votos han cambiado
     if (document.getElementById('votesFRA').textContent != votes.FRA.toString()) {
@@ -85,6 +85,10 @@ function updateVotes() {
     if (document.getElementById('votesBlanco').textContent != votes.Blanco.toString()) {
         document.getElementById('votesBlanco').textContent = votes.Blanco;
         document.getElementById('percentBlanco').textContent = percentBlanco + '%';
+    }
+
+    if (document.getElementById('totalVotes').textContent != totalVotes.toString()) {
+        document.getElementById('totalVotes').textContent = totalVotes;
     }
 
     // Solo actualizamos la gráfica si los datos han cambiado
