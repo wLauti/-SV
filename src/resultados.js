@@ -92,7 +92,7 @@ function updateVotes() {
     }
 
     // Solo actualizamos la gráfica si los datos han cambiado
-    chart.data.datasets[0].data = [votes.FRA, votes.AE, votes.UPP, votes.NBA, votes.Blanco];
+    chart.data.datasets[0].data = [votes.FRA, votes.AE, votes.UPP, votes.NBA, votes.Blanco, totalVotes];
     chart.update();
 
     // Guardar los votos en localStorage
