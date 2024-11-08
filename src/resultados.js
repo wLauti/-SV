@@ -1,16 +1,16 @@
 // Recuperar los votos almacenados en localStorage o inicializar si no existen
-let votes = JSON.parse(localStorage.getItem('votes')) || { FRA: 0, AE: 0, Blanco: 0, UPP: 0, NBA: 0 };
+let votes = JSON.parse(localStorage.getItem('votes')) || { FRA: 0, AE: 0, Blanco: 0, UPP: 0, NBA: 0 , MBU: 0};
 
 // Crear la gráfica circular
 let ctx = document.getElementById('votingChart').getContext('2d');
 let chart = new Chart(ctx, {
     type: 'doughnut', // Tipo de gráfica circular
     data: {
-        labels: ['FRA', 'AE', 'Voto en Blanco', "UPP", "NBA"],
+        labels: ['FRA', 'AE', 'Voto en Blanco', "UPP", "NBA", "MBU"],
         datasets: [{
             label: 'Porcentaje de Votos',
-            data: [votes.FRA, votes.AE, votes.Blanco, votes.UPP, votes.NBA], // Datos iniciales
-            backgroundColor: ['#00ff3a', '#00c9ff', '#b4b4b4', "#ff1e1e", "#ff8b00"], // Colores para cada partido
+            data: [votes.FRA, votes.AE, votes.Blanco, votes.UPP, votes.NBA, votes.MBU], // Datos iniciales
+            backgroundColor: ['#00ff3a', '#00c9ff', '#b4b4b4', "#ff1e1e", "#ff8b00", "#74ff19"], // Colores para cada partido
             hoverOffset: 4
         }]
     },
@@ -41,6 +41,8 @@ document.addEventListener('keydown', function(event) {
         case 'A': if (votes.UPP > 0) votes.UPP--; break;  // Disminuir votos de FRA
         case 'W': votes.NBA++; break;  // Aumentar votos de FRA
         case 'S': if (votes.NBA > 0) votes.NBA--; break;  // Disminuir votos de FRA
+        case 'R': votes.MBU++; break;  // Aumentar votos de FRA
+        case 'F': if (votes.MBU > 0) votes.MBU--; break;  // Disminuir votos de FRA
         case 'K': votes.Blanco++; break;  // Aumentar votos de Blanco
         case 'M': if (votes.Blanco > 0) votes.Blanco--; break;  // Disminuir votos de Blanco
         case 'Enter': printResults(); break;  // Al presionar Enter, imprimir los resultados
@@ -59,6 +61,7 @@ function updateVotes() {
     const percentAE = totalVotes > 0 ? (votes.AE / (totalVotes - votes.Blanco) * 100).toFixed(2) : 0;
     const percentUPP = totalVotes > 0 ? (votes.UPP / (totalVotes - votes.Blanco) * 100).toFixed(2) : 0;
     const percentNBA = totalVotes > 0 ? (votes.NBA / (totalVotes - votes.Blanco) * 100).toFixed(2) : 0;
+    const percentMBU = totalvotes > 0 ? (votes.MBU / (totalVotes - votes.Blanco) * 100).toFixed(2) : 0;
     const percentBlanco = totalVotes > 0 ? (votes.Blanco / totalVotes * 100).toFixed(2) : 0;
 
     // Actualizar solo si los votos han cambiado
@@ -82,6 +85,11 @@ function updateVotes() {
         document.getElementById('percentNBA').textContent = percentNBA + '%';
     }
 
+    if (document.getElementById('votesMBU').textContent != votes.MBU.toString()) {
+        document.getElementById('votesMBU').textContent = votes.MBU;
+        document.getElementById('percentMBU').textContent = percentMBU + '%';
+    }
+
     if (document.getElementById('votesBlanco').textContent != votes.Blanco.toString()) {
         document.getElementById('votesBlanco').textContent = votes.Blanco;
         document.getElementById('percentBlanco').textContent = percentBlanco + '%';
@@ -92,7 +100,7 @@ function updateVotes() {
     }
 
     // Solo actualizamos la gráfica si los datos han cambiado
-    chart.data.datasets[0].data = [votes.FRA, votes.AE, votes.UPP, votes.NBA, votes.Blanco];
+    chart.data.datasets[0].data = [votes.FRA, votes.AE, votes.UPP, votes.NBA, votes.MBU, votes.Blanco];
     chart.update();
 
     // Guardar los votos en localStorage
