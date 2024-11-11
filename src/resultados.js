@@ -54,7 +54,7 @@ document.addEventListener('keydown', function(event) {
 // Función para actualizar los votos en la tabla y la gráfica
 // Verificar si los votos cambiaron antes de actualizar la gráfica
 function updateVotes() {
-    const totalVotes = votes.FRA + votes.AE + votes.UPP + votes.NBA + votes.Blanco;
+    const totalVotes = votes.FRA + votes.AE + votes.UPP + votes.NBA + votes.MBU + votes.Blanco;
 
     // Evitar división por cero
     const percentFRA = totalVotes > 0 ? (votes.FRA / (totalVotes - votes.Blanco) * 100).toFixed(2) : 0;
@@ -100,7 +100,7 @@ function updateVotes() {
     }
 
     // Solo actualizamos la gráfica si los datos han cambiado
-    chart.data.datasets[0].data = [votes.FRA, votes.AE, votes.UPP, votes.NBA, votes.MBU, votes.Blanco];
+    chart.data.datasets[0].data = [votes.FRA, votes.AE, votes.UPP, votes.NBA, votes.Blanco, votes.MBU];
     chart.update();
 
     // Guardar los votos en localStorage
